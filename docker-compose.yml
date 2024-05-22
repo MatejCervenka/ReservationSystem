@@ -1,0 +1,6 @@
+﻿services:
+  reservesystem:
+    image: reservesystem
+    build:
+      context: .
+      dockerfile: Dockerfile
