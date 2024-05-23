@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using ReserveSystem.Interfaces;
+using ReserveSystem.Models;
+using ReserveSystem.Services;
+
 namespace ReserveSystem;
 
 public class Program
@@ -6,16 +11,28 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
+        // Načtení connection string z appsettings.json
+        var connectionString = builder.Configuration.GetConnectionString("AppConnectionString");
+
+        // Konfigurace DbContext
+        builder.Services.AddDbContext<MyDbContext>(options =>
+            options.UseSqlServer(connectionString));
+
+        // Registrace vašich služeb v DI kontejneru
+        builder.Services.AddScoped<IReservationService, ReservationService>();
+        builder.Services.AddScoped<IPricingService, PricingService>();
+        builder.Services.AddScoped<IServiceService, ServiceService>();
+        builder.Services.AddScoped<ILoginService, LoginService>();
+
+        // Přidání služeb pro kontrolery, MVC apod.
         builder.Services.AddControllersWithViews();
 
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
+        // Další konfigurace middleware apod.
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Home/Error");
-            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
 
