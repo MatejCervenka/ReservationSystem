@@ -1,11 +1,23 @@
-﻿namespace ReserveSystem.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-public class Pricing
+namespace ReserveSystem.Models;
+
+public class Pricing : Entity
 {
-    public int Id { get; set; }
+    [Required] 
     public string Title { get; set; }
+    
     public string Description { get; set; }
+    
+    [Column(TypeName = "decimal(18, 2)")]
     public decimal SaleAmount { get; set; }
+
+    [Required]
+    [Column(TypeName = "decimal(18, 2)")]
     public decimal Amount { get; set; }
+    
+    [Required]
+    [Column(TypeName = "char(5)")]
     public char Currency { get; set; }
 }

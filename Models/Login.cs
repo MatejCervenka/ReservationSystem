@@ -1,9 +1,14 @@
-﻿namespace ReserveSystem.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class Login
+namespace ReserveSystem.Models;
+
+public class Login : Entity
 {
-    public int Id { get; set; }
+    [Required]
     public string Username { get; set; }
+    
+    [Required]
     public string Password { get; set; }
+    
     public DateTime CreatedAt { get; set; }
 }
