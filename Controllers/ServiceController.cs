@@ -14,7 +14,6 @@ public class ServiceController : Controller
 
     public IActionResult Index()
     {
-        _serviceService.MyMethod();
         return View();
     }
 }

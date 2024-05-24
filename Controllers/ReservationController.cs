@@ -14,7 +14,6 @@ public class ReservationController : Controller
 
     public IActionResult Index()
     {
-        _reservationService.MyMethod();
         return View();
     }
 }

@@ -11,7 +11,7 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args); // Vytvoří instanci WebApplicationBuilder, která je použita k nastavení a konfiguraci aplikace
-
+        
         // Načtení connection string z appsettings.json
         var connectionString = builder.Configuration.GetConnectionString("AppConnectionString"); // Načte connection string s názvem "AppConnectionString" z konfiguračního souboru
 
@@ -27,9 +27,11 @@ public class Program
 
         // Přidání služeb pro kontrolery, MVC apod.
         builder.Services.AddControllersWithViews(); // Přidá podporu pro kontrolery a MVC pohledy
+        
+        builder.Services.AddAutoMapper(typeof(Program));
 
         var app = builder.Build(); // Vytvoří instanci WebApplication, která je použita pro konfiguraci middleware a spuštění aplikace
-
+        
         // Další konfigurace middleware apod.
         if (!app.Environment.IsDevelopment()) // Pokud aplikace není v režimu vývoje
         {
@@ -49,5 +51,11 @@ public class Program
             pattern: "{controller=Home}/{action=Index}/{id?}"); // Mapuje cesty na kontrolery s defaultní cestou "{controller=Home}/{action=Index}/{id?}"
 
         app.Run(); // Spustí aplikaci
+    }
+
+    public void Test()
+    {
+        LoginService service = null;
+        service.GetAll();
     }
 }
