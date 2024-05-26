@@ -19,5 +19,5 @@ public class ReservationViewModel
     
     public DateTime CreatedAt { get; set; }
     
-    //public Service Service { get; set; }
+    public ServiceViewModel ServiceViewModel { get; set; }
 }

@@ -80,6 +80,21 @@ public class PricingService : IPricingService
         {
             return false; 
         }
+        
+        if (string.IsNullOrEmpty(pricingViewModel.Description))
+        {
+            return false; 
+        }
+        
+        if (decimal.IsNegative(pricingViewModel.Amount))
+        {
+            return false; 
+        }
+        
+        if (decimal.IsNegative(pricingViewModel.SaleAmount))
+        {
+            return false; 
+        }
 
         var pricingDbModel = _mapper.Map<Pricing>(pricingViewModel);
 

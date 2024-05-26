@@ -28,7 +28,7 @@ public class Program
         // Přidání služeb pro kontrolery, MVC apod.
         builder.Services.AddControllersWithViews(); // Přidá podporu pro kontrolery a MVC pohledy
         
-        builder.Services.AddAutoMapper(typeof(Program));
+        builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
         var app = builder.Build(); // Vytvoří instanci WebApplication, která je použita pro konfiguraci middleware a spuštění aplikace
         

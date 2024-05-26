@@ -9,5 +9,5 @@ public class ServiceViewModel
     public string Name { get; set; }
     
     // Navigační vlastnost pro rezervace
-    //public ICollection<Reservation> Reservations { get; set; }
+    public ICollection<ReservationViewModel> Reservations { get; set; }
 }
