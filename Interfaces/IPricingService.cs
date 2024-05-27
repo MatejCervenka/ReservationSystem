@@ -1,6 +1,11 @@
-﻿namespace ReserveSystem.Interfaces;
+﻿using ReserveSystem.ViewModels;
+
+namespace ReserveSystem.Interfaces;
 
 public interface IPricingService
 {
-    void MyMethod();
+    List<PricingViewModel> GetAll();
+    PricingViewModel GetById(int id);
+    PricingViewModel GetByTitle(string title);
+    bool CreatePricing(PricingViewModel pricingViewModel);
 }

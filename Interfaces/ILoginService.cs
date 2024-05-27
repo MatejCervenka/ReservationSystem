@@ -1,6 +1,12 @@
-﻿namespace ReserveSystem.Interfaces;
+﻿using ReserveSystem.ViewModels;
+
+namespace ReserveSystem.Interfaces;
 
 public interface ILoginService
 {
-    void MyMethod();
+    bool IsValid(string username, string password);
+    List<LoginViewModel> GetAll();
+    LoginViewModel GetById(int id);
+    LoginViewModel GetByName(string name);
+    bool CreateLogin(LoginViewModel loginViewModel);
 }

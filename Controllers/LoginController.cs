@@ -14,7 +14,6 @@ public class LoginController : Controller
 
     public IActionResult Index()
     {
-        _loginService.MyMethod();
         return View();
     }
 }

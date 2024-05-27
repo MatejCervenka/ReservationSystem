@@ -14,7 +14,6 @@ public class PricingController : Controller
 
     public IActionResult Index()
     {
-        _pricingService.MyMethod();
         return View();
     }
 }
