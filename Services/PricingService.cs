@@ -105,16 +105,7 @@ public class PricingService : IPricingService
     
     public PricingViewModel GetPricing()
     {
-        return _dbContext.Pricings
-            .Select(p => new PricingViewModel
-            {
-                Id = p.Id,
-                Title = p.Title,
-                Description = p.Description,
-                SaleAmount = p.SaleAmount,
-                Amount = p.Amount,
-                Currency = p.Currency
-            })
-            .FirstOrDefault();
+        var pricing = _dbContext.Pricings.FirstOrDefault();
+        return _mapper.Map<PricingViewModel>(pricing);
     }
 }

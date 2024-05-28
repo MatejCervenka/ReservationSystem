@@ -155,17 +155,7 @@ public class ReservationService : IReservationService
     
     public List<ReservationViewModel> GetReservations()
     {
-        return _dbContext.Reservations
-            .Select(r => new ReservationViewModel
-            {
-                Id = r.Id,
-                ServiceId = r.ServiceId,
-                Name = r.Name,
-                Surname = r.Surname,
-                Phone = r.Phone,
-                Email = r.Email,
-                CreatedAt = r.CreatedAt
-            })
-            .ToList();
+        var reservations = _dbContext.Reservations.ToList();
+        return _mapper.Map<List<ReservationViewModel>>(reservations);
     }
 }

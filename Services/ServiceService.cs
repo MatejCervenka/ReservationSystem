@@ -91,13 +91,7 @@ public class ServiceService : IServiceService
 
     public ServiceViewModel GetService()
     {
-        // Fetch service data from the database
-        return _dbContext.Services
-            .Select(s => new ServiceViewModel
-            {
-                Id = s.Id,
-                Name = s.Name
-            })
-            .FirstOrDefault();
+        var service = _dbContext.Services.FirstOrDefault();
+        return _mapper.Map<ServiceViewModel>(service);
     }
 }

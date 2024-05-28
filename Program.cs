@@ -11,13 +11,12 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args); // Vytvoří instanci WebApplicationBuilder, která je použita k nastavení a konfiguraci aplikace
-        
+
         // Načtení connection string z appsettings.json
         var connectionString = builder.Configuration.GetConnectionString("AppConnectionString"); // Načte connection string s názvem "AppConnectionString" z konfiguračního souboru
 
         // Konfigurace DbContext
-        builder.Services.AddDbContext<MyDbContext>(options =>
-            options.UseSqlServer(connectionString)); // Přidá MyDbContext do DI kontejneru a nakonfiguruje ho pro použití SQL Serveru s načteným connection stringem
+        builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(connectionString)); // Přidá MyDbContext do DI kontejneru a nakonfiguruje ho pro použití SQL Serveru s načteným connection stringem
 
         // Registrace vašich služeb v DI kontejneru
         builder.Services.AddScoped<IMainService, MainService>();
@@ -28,7 +27,8 @@ public class Program
 
         // Přidání služeb pro kontrolery, MVC apod.
         builder.Services.AddControllersWithViews(); // Přidá podporu pro kontrolery a MVC pohledy
-        
+
+        // Register AutoMapper
         builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
         var app = builder.Build(); // Vytvoří instanci WebApplication, která je použita pro konfiguraci middleware a spuštění aplikace

@@ -1,4 +1,5 @@
-﻿using ReserveSystem.Interfaces;
+﻿using AutoMapper;
+using ReserveSystem.Interfaces;
 using ReserveSystem.ViewModels;
 
 namespace ReserveSystem.Services;
@@ -18,7 +19,6 @@ public class MainService : IMainService
 
     public IndexPageViewModel GetIndexViewModel()
     {
-    
         var pricing = _pricingService.GetPricing();
         var reservations = _reservationService.GetReservations();
         var service = _serviceService.GetService();

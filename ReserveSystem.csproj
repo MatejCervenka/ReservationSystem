@@ -21,4 +21,10 @@
       </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="..\..\..\ReserveSystem\ReserveSystem\ReserveSystem\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+
 </Project>
