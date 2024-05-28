@@ -20,6 +20,7 @@ public class Program
             options.UseSqlServer(connectionString)); // Přidá MyDbContext do DI kontejneru a nakonfiguruje ho pro použití SQL Serveru s načteným connection stringem
 
         // Registrace vašich služeb v DI kontejneru
+        builder.Services.AddScoped<IMainService, MainService>();
         builder.Services.AddScoped<IReservationService, ReservationService>(); // Přidá službu ReservationService s životností Scoped
         builder.Services.AddScoped<IPricingService, PricingService>(); // Přidá službu PricingService s životností Scoped
         builder.Services.AddScoped<IServiceService, ServiceService>(); // Přidá službu ServiceService s životností Scoped
@@ -51,11 +52,5 @@ public class Program
             pattern: "{controller=Home}/{action=Index}/{id?}"); // Mapuje cesty na kontrolery s defaultní cestou "{controller=Home}/{action=Index}/{id?}"
 
         app.Run(); // Spustí aplikaci
-    }
-
-    public void Test()
-    {
-        LoginService service = null;
-        service.GetAll();
     }
 }

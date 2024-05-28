@@ -152,4 +152,20 @@ public class ReservationService : IReservationService
 
         return _dbContext.SaveChanges() > 0;
     }
+    
+    public List<ReservationViewModel> GetReservations()
+    {
+        return _dbContext.Reservations
+            .Select(r => new ReservationViewModel
+            {
+                Id = r.Id,
+                ServiceId = r.ServiceId,
+                Name = r.Name,
+                Surname = r.Surname,
+                Phone = r.Phone,
+                Email = r.Email,
+                CreatedAt = r.CreatedAt
+            })
+            .ToList();
+    }
 }

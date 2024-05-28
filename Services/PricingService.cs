@@ -102,4 +102,19 @@ public class PricingService : IPricingService
 
         return _dbContext.SaveChanges() > 0;
     }
+    
+    public PricingViewModel GetPricing()
+    {
+        return _dbContext.Pricings
+            .Select(p => new PricingViewModel
+            {
+                Id = p.Id,
+                Title = p.Title,
+                Description = p.Description,
+                SaleAmount = p.SaleAmount,
+                Amount = p.Amount,
+                Currency = p.Currency
+            })
+            .FirstOrDefault();
+    }
 }

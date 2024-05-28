@@ -88,4 +88,16 @@ public class ServiceService : IServiceService
 
         return _dbContext.SaveChanges() > 0;
     }
+
+    public ServiceViewModel GetService()
+    {
+        // Fetch service data from the database
+        return _dbContext.Services
+            .Select(s => new ServiceViewModel
+            {
+                Id = s.Id,
+                Name = s.Name
+            })
+            .FirstOrDefault();
+    }
 }
