@@ -220,6 +220,9 @@ nav a:hover {
 footer {
   background-color: #333;
   height: 5vh;
+  color: white;
+  text-align: center;
+  align-items: center;
 }
 
 .login-page, .reservations-page, .edit-reservation-page {

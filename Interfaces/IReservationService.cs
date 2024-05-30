@@ -11,5 +11,4 @@ public interface IReservationService
     ReservationViewModel GetByServiceName(string serviceName);
     ReservationViewModel GetBySurname(string surname);
     bool CreateReservation(ReservationViewModel reservationViewModel);
-    List<ReservationViewModel> GetReservations();
 }

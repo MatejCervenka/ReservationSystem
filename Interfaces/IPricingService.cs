@@ -9,5 +9,4 @@ public interface IPricingService
     PricingViewModel GetById(int id);
     PricingViewModel GetByTitle(string title);
     bool CreatePricing(PricingViewModel pricingViewModel);
-    PricingViewModel? GetPricing();
 }

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ReserveSystem.ViewModels;
 
@@ -18,6 +19,6 @@ public class ReservationViewModel
     public string Email { get; set; }
     
     public DateTime CreatedAt { get; set; }
-    
-    public ServiceViewModel ServiceViewModel { get; set; }
+
+    public List<SelectListItem> ServiceList { get; set; }
 }

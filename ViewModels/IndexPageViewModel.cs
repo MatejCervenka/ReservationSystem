@@ -2,8 +2,8 @@
 
 public class IndexPageViewModel
 {
-    public LoginViewModel Login { get; set; }
-    public PricingViewModel Pricing { get; set; }
+    public List<PricingViewModel> PricingList { get; set; }
     public ReservationViewModel Reservation { get; set; }
-    public ServiceViewModel Service { get; set; }
+    
+    public List<ServiceViewModel> ServiceList { get; set; }
 }

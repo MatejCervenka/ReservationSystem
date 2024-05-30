@@ -102,10 +102,4 @@ public class PricingService : IPricingService
 
         return _dbContext.SaveChanges() > 0;
     }
-    
-    public PricingViewModel GetPricing()
-    {
-        var pricing = _dbContext.Pricings.FirstOrDefault();
-        return _mapper.Map<PricingViewModel>(pricing);
-    }
 }

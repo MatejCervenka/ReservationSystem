@@ -16,8 +16,7 @@ public class ServiceService : IServiceService
         _dbContext = dbContext;
         _mapper = mapper;
     }
-
-
+    
     public List<ServiceViewModel> GetAll()
     {
         var serviceDbModels = _dbContext.Pricings.ToList();
@@ -87,11 +86,5 @@ public class ServiceService : IServiceService
         _dbContext.Services.Add(serviceDbModel);
 
         return _dbContext.SaveChanges() > 0;
-    }
-
-    public ServiceViewModel GetService()
-    {
-        var service = _dbContext.Services.FirstOrDefault();
-        return _mapper.Map<ServiceViewModel>(service);
     }
 }

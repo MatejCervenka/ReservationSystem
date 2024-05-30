@@ -9,6 +9,4 @@ public interface IServiceService
     ServiceViewModel GetById(int id);
     ServiceViewModel GetByName(string name);
     bool CreateService(ServiceViewModel serviceViewModel);
-    ServiceViewModel? GetService();
-    
 }

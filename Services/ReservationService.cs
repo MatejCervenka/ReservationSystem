@@ -152,10 +152,4 @@ public class ReservationService : IReservationService
 
         return _dbContext.SaveChanges() > 0;
     }
-    
-    public List<ReservationViewModel> GetReservations()
-    {
-        var reservations = _dbContext.Reservations.ToList();
-        return _mapper.Map<List<ReservationViewModel>>(reservations);
-    }
 }
