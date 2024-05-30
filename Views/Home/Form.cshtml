@@ -1,5 +1,16 @@
 ﻿@model ReserveSystem.ViewModels.ReservationViewModel
 
+@{
+if (Model == null)
+{
+throw new InvalidOperationException("ReservationViewModel is null.");
+}
+if (Model.ServiceList == null)
+{
+throw new InvalidOperationException("ServiceList is null.");
+}
+}
+
 <div class="reservation-form">
     <h3>Rezervace</h3>
     @using (Html.BeginForm("CreateReservation", "Home", FormMethod.Post))
