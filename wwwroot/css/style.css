@@ -12,8 +12,10 @@ header {
   background-color: #333;
   color: white;
   padding: 10px 20px;
-  height: auto; /* Změněno z pevné výšky na auto */
-  min-height: 5vh; /* Přidáno pro minimální výšku */
+  height: auto;
+  width: 100%;
+  min-height: 5vh;
+  position: fixed;
 }
 
 .header-left h1, .header-left h2 {
@@ -39,6 +41,7 @@ nav a.button {
   padding: 5px 10px;
   border-radius: 5px;
   color: black;
+  margin-right: 25px;
 }
 
 .divider {
@@ -48,20 +51,20 @@ nav a.button {
 
 main {
   padding: 20px;
-  min-height: 80vh; /* Přidáno pro minimální výšku */
+  min-height: 80vh; 
 }
 
 .intro-section, .pricing-section {
   display: flex;
   flex-direction: row;
-  align-items: flex-start; /* Změněno z center na flex-start */
+  align-items: flex-start;
   padding: 10vh 10vh;
   gap: 20vh;
-  min-height: 65vh; /* Přidáno pro minimální výšku */
+  min-height: 72vh;
 }
 
 .intro-text {
-  flex: 1; /* Přidáno pro zabírání dostupného prostoru */
+  flex: 1; 
   margin-right: 20px;
 }
 
@@ -78,8 +81,8 @@ main {
   flex-direction: column;
   flex: 0 0 300px;
   align-items: center;
-  justify-content: center; /* Přidáno pro vertikální zarovnání obsahu */
-  height: 20vh; /* Změněno z pevné výšky na auto */
+  justify-content: center; 
+  height: 20vh;
 }
 
 .reservation-box h2 {
@@ -167,7 +170,7 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   text-align: center;
-  align-items: center; /* Změněno z center na flex-start */
+  align-items: center; 
   padding: 3vh 10vh 0 10vh;
   gap: 3vh;
   min-height: 65vh;
@@ -217,17 +220,23 @@ nav a:hover {
   height: 20vh;
 }
 
-footer {
+.footer {
   background-color: #333;
   height: 5vh;
-  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-content {
   text-align: center;
-  align-items: center;
+  color: white;
 }
 
 .login-page, .reservations-page, .edit-reservation-page {
   max-width: 600px;
   margin: 0 auto;
+  min-height: 87vh;
+  padding: 10vh 10vh;
 }
 
 .login-page h2, .reservations-page h2, .edit-reservation-page h2 {

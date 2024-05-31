@@ -1,10 +1,19 @@
 ﻿@model ReserveSystem.ViewModels.IndexPageViewModel
 
 <main>
-    @Html.Partial("Intro.cshtml")
+    <section id="intro-section" class="intro-section">
+        @Html.Partial("Intro.cshtml")
+    </section>
+    
     <div class="divider"></div>
-    @Html.Partial("Pricing.cshtml", Model.PricingList)
-    @Html.Partial("Form.cshtml", Model.Reservation)
+    
+    <section id="pricing-section" class="pricing-section">
+        @Html.Partial("Pricing.cshtml", Model.PricingList)
+        @Html.Partial("Form.cshtml", Model.Reservation)
+    </section>
+    
     <div class="divider"></div>
-    @Html.Partial("Contacts.cshtml")
+    <section id="contact-section" class="contact-section">
+        @Html.Partial("Contacts.cshtml")
+    </section>
 </main>

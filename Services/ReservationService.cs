@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using ReserveSystem.Database;
 using ReserveSystem.Interfaces;
 using ReserveSystem.Models;
@@ -151,5 +152,14 @@ public class ReservationService : IReservationService
         _dbContext.Reservations.Add(reservationDbModel);
 
         return _dbContext.SaveChanges() > 0;
+    }
+
+    public List<SelectListItem> GetServiceList()
+    {
+        return _dbContext.Services.Select(service => new SelectListItem
+        {
+            Value = service.Id.ToString(),
+            Text = service.Name
+        }).ToList();
     }
 }

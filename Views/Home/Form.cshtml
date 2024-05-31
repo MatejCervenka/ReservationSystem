@@ -1,16 +1,5 @@
 ﻿@model ReserveSystem.ViewModels.ReservationViewModel
 
-@{
-if (Model == null)
-{
-throw new InvalidOperationException("ReservationViewModel is null.");
-}
-if (Model.ServiceList == null)
-{
-throw new InvalidOperationException("ServiceList is null.");
-}
-}
-
 <div class="reservation-form">
     <h3>Rezervace</h3>
     @using (Html.BeginForm("CreateReservation", "Home", FormMethod.Post))
@@ -31,7 +20,9 @@ throw new InvalidOperationException("ServiceList is null.");
         @Html.EditorFor(x => x.Email)
         @Html.ValidationMessageFor(x => x.Email)
     
+        @Html.LabelFor(x => x.ServiceList)
         @Html.DropDownListFor(x => x.ServiceId, Model.ServiceList, "Select an option")
+        
         <button type="submit">Rezervovat</button>
     }
 </div>

@@ -15,5 +15,6 @@ public class PricingViewModel
 
     public decimal Amount { get; set; }
     
+    [Column(TypeName = "char(5)")]
     public char Currency { get; set; }
 }

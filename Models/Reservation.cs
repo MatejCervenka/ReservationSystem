@@ -25,4 +25,6 @@ public class Reservation : Entity
     public DateTime CreatedAt { get; set; }
     
     public Service Service { get; set; }
+    
+    public Pricing Pricing { get; set; }
 }

@@ -1,4 +1,5 @@
-﻿using ReserveSystem.Models;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using ReserveSystem.Models;
 using ReserveSystem.ViewModels;
 
 namespace ReserveSystem.Interfaces;
@@ -11,4 +12,5 @@ public interface IReservationService
     ReservationViewModel GetByServiceName(string serviceName);
     ReservationViewModel GetBySurname(string surname);
     bool CreateReservation(ReservationViewModel reservationViewModel);
+    List<SelectListItem> GetServiceList();
 }

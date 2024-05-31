@@ -16,4 +16,9 @@ public class LoginController : Controller
     {
         return View();
     }
+
+    public IActionResult Login()
+    {
+        throw new NotImplementedException();
+    }
 }

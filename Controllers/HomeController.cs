@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using ReserveSystem.Interfaces;
+using ReserveSystem.ViewModels;
 
 namespace ReserveSystem.Controllers
 {
@@ -16,6 +17,19 @@ namespace ReserveSystem.Controllers
         {
             var viewModel = _mainService.GetIndexViewModel();
             return View(viewModel);
+        }
+
+        [HttpPost]
+        [Route("/create-reservation")]
+        public IActionResult CreateReservation(ReservationViewModel viewModel)
+        {
+            var isSuccess = _mainService.CreateReservation(viewModel);
+            if (isSuccess)
+            {
+                return View(viewModel);
+            }
+
+            throw new Exception("Could not create reservation");
         }
     }
 }

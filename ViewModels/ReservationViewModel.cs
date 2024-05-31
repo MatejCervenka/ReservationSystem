@@ -21,4 +21,5 @@ public class ReservationViewModel
     public DateTime CreatedAt { get; set; }
 
     public List<SelectListItem> ServiceList { get; set; }
+    
 }
