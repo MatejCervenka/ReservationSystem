@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ReserveSystem.Interfaces;
+using ReserveSystem.ViewModels;
 
 namespace ReserveSystem.Controllers;
 
@@ -12,13 +13,20 @@ public class LoginController : Controller
         _loginService = loginService;
     }
 
-    public IActionResult Index()
+    [HttpGet]
+    public IActionResult Login()
     {
         return View();
     }
 
-    public IActionResult Login()
+    [HttpPost]
+    public IActionResult Login(LoginViewModel model)
     {
-        throw new NotImplementedException();
+        if (!ModelState.IsValid)
+        {
+            // Pokud validace selže, vrátíme uživatele zpět na formulář s chybami
+            return View(model);
+        }
+        return RedirectToAction("Index", "Home");
     }
 }
