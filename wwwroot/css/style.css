@@ -18,8 +18,11 @@ header {
   position: fixed;
 }
 
-.header-left h1, .header-left h2 {
+.header-left h2, .header-left a {
   margin: 0;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
 }
 
 nav ul {

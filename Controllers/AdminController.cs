@@ -4,11 +4,11 @@ using ReserveSystem.ViewModels;
 
 namespace ReserveSystem.Controllers;
 
-public class LoginController : Controller
+public class AdminController : Controller
 {
     private readonly ILoginService _loginService;
 
-    public LoginController(ILoginService loginService)
+    public AdminController(ILoginService loginService)
     {
         _loginService = loginService;
     }
@@ -24,9 +24,21 @@ public class LoginController : Controller
     {
         if (!ModelState.IsValid)
         {
-            // Pokud validace selže, vrátíme uživatele zpět na formulář s chybami
             return View(model);
         }
-        return RedirectToAction("Index", "Home");
+
+        if (_loginService.IsValid(model.Username, model.Password))
+        {
+            // Log the user in (use authentication middleware here)
+            return RedirectToAction("Reservations", "Admin");
+        }
+
+        ModelState.AddModelError("", "Invalid username or password");
+        return View(model);
+    }
+
+    public IActionResult Reservations()
+    {
+        return View();
     }
 }

@@ -2,14 +2,14 @@
 
 <main class="login-page">
     <h2>Login</h2>
-    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+    @using (Html.BeginForm("Login", "Admin", FormMethod.Post))
     {
         @Html.LabelFor(x => x.Username)
         @Html.EditorFor(x => x.Username)
         @Html.ValidationMessageFor(x => x.Username)
     
         @Html.LabelFor(x => x.Password)
-        @Html.EditorFor(x => x.Password)
+        @Html.EditorFor(x => x.Password, new { htmlAttributes = new { type = "password" } })
         @Html.ValidationMessageFor(x => x.Password)
     
         <button type="submit">Přihlásit se</button>
