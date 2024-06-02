@@ -1,25 +1,29 @@
 ﻿using ReserveSystem.Interfaces;
 using ReserveSystem.ViewModels;
 
-namespace ReserveSystem.Services;
-
-public class AdminService : IAdminService
+namespace ReserveSystem.Services
 {
-    private readonly IReservationService _reservationService;
-
-    public AdminService(IReservationService reservationService)
+    // Služba pro administrátory, implementující rozhraní IAdminService
+    public class AdminService : IAdminService
     {
-        _reservationService = reservationService;
-    }
+        private readonly IReservationService _reservationService;
 
-    public ReservationsListViewModel GetReservationsListViewModel()
-    {
-        var reservationList = _reservationService.GetAll();
-
-        var viewModel = new ReservationsListViewModel
+        // Konstruktor, který injektuje IReservationService
+        public AdminService(IReservationService reservationService)
         {
-            ReservationList = reservationList
-        };
-        return viewModel;
+            _reservationService = reservationService;
+        }
+
+        // Metoda pro získání viewModelu seznamu rezervací
+        public ReservationsListViewModel GetReservationsListViewModel()
+        {
+            var reservationList = _reservationService.GetAll();
+
+            var viewModel = new ReservationsListViewModel
+            {
+                ReservationList = reservationList
+            };
+            return viewModel;
+        }
     }
 }

@@ -3,60 +3,71 @@ using ReserveSystem.Interfaces;
 using ReserveSystem.Models;
 using ReserveSystem.ViewModels;
 
-namespace ReserveSystem.Services;
-
-public class MainService : IMainService
+namespace ReserveSystem.Services
 {
-    private readonly IPricingService _pricingService;
-    private readonly IReservationService _reservationService;
-    private readonly MyDbContext _dbContext;
-
-    public MainService(IPricingService pricingService, IReservationService reservationService, MyDbContext dbContext)
+    // Hlavní služba aplikace, implementující rozhraní IMainService
+    public class MainService : IMainService
     {
-        _pricingService = pricingService;
-        _reservationService = reservationService;
-        _dbContext = dbContext;
-    }
+        private readonly IPricingService _pricingService;
+        private readonly IReservationService _reservationService;
+        private readonly MyDbContext _dbContext;
 
-    public IndexPageViewModel GetIndexViewModel()
-    {
-        var pricingList = _pricingService.GetAll();
-        
-        var reservationViewModel = new ReservationViewModel
+        // Konstruktor služby, který injektuje závislosti
+        public MainService(IPricingService pricingService, IReservationService reservationService, MyDbContext dbContext)
         {
-            ServiceList = _reservationService.GetServiceList()
-        };
+            _pricingService = pricingService;
+            _reservationService = reservationService;
+            _dbContext = dbContext;
+        }
 
-        var viewModel = new IndexPageViewModel
+        // Metoda pro získání viewModelu pro úvodní stránku
+        public IndexPageViewModel GetIndexViewModel()
         {
-            PricingList = pricingList,
-            Reservation = reservationViewModel,
-        };
-        return viewModel;
-    }
-
-    public bool CreateReservation(ReservationViewModel reservationViewModel)
-    {
-        try
-        {
-            var reservation = new Reservation
+            // Získání seznamu cen pomocí PricingService
+            var pricingList = _pricingService.GetAll();
+            
+            // Vytvoření viewModelu pro rezervaci
+            var reservationViewModel = new ReservationViewModel
             {
-                Name = reservationViewModel.Name,
-                Surname = reservationViewModel.Surname,
-                Phone = reservationViewModel.Phone,
-                Email = reservationViewModel.Email,
-                ServiceId = reservationViewModel.ServiceId,
-                CreatedAt = DateTime.Now
+                ServiceList = _reservationService.GetServiceList()
             };
 
-            _dbContext.Reservations.Add(reservation);
-            _dbContext.SaveChanges();
-            return true;
+            // Vytvoření hlavního viewModelu pro úvodní stránku
+            var viewModel = new IndexPageViewModel
+            {
+                PricingList = pricingList,
+                Reservation = reservationViewModel,
+            };
+            return viewModel;
         }
-        catch (Exception ex)
+
+        // Metoda pro vytvoření nové rezervace
+        public bool CreateReservation(ReservationViewModel reservationViewModel)
         {
-            Console.WriteLine(ex);
-            return false;
+            try
+            {
+                // Vytvoření nové rezervace z ReservationViewModel
+                var reservation = new Reservation
+                {
+                    Name = reservationViewModel.Name,
+                    Surname = reservationViewModel.Surname,
+                    Phone = reservationViewModel.Phone,
+                    Email = reservationViewModel.Email,
+                    ServiceId = reservationViewModel.ServiceId,
+                    CreatedAt = DateTime.Now
+                };
+
+                // Přidání rezervace do databáze a uložení změn
+                _dbContext.Reservations.Add(reservation);
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Výpis chyby při neúspěšném vytváření rezervace
+                Console.WriteLine(ex);
+                return false;
+            }
         }
     }
 }

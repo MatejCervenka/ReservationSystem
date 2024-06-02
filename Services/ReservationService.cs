@@ -8,32 +8,41 @@ using ReserveSystem.ViewModels;
 
 namespace ReserveSystem.Services;
 
-public class ReservationService : IReservationService 
+    // Služba pro práci s rezervacemi, implementující rozhraní IReservationService
+public class ReservationService : IReservationService
 {
     private readonly MyDbContext _dbContext;
     private readonly IMapper _mapper;
 
+    // Konstruktor služby, který injektuje závislosti
     public ReservationService(MyDbContext dbContext, IMapper mapper)
     {
         _dbContext = dbContext;
         _mapper = mapper;
     }
 
+    // Metoda pro získání seznamu rezervací v podobě viewModelu
     public List<ReservationListViewModel> GetAll()
     {
+        // Získání všech rezervací z databáze, včetně propojené entity Service
         var reservation = _dbContext.Reservations.Include(x => x.Service).ToList();
+
+        // Mapování entit na viewModely pomocí AutoMapperu
         var result = _mapper.Map<List<ReservationListViewModel>>(reservation);
+
         return result;
     }
-    
-    
+
+
+    // Metoda pro získání rezervace podle ID
     public ReservationViewModel GetById(int id)
     {
         if (id == 0)
         {
             return null;
         }
-        
+
+        // Najde rezervaci podle ID
         var reservationDbModel = _dbContext.Reservations.Find(id);
 
         if (reservationDbModel == null)
@@ -41,11 +50,13 @@ public class ReservationService : IReservationService
             return null;
         }
 
+        // Namapuje entitu Reservation na ReservationViewModel pomocí AutoMapperu
         var reservationViewModel = _mapper.Map<ReservationViewModel>(reservationDbModel);
 
         return reservationViewModel;
     }
-
+    
+    // Další metody pro získání rezervace podle různých kritérií a vytvoření nové rezervace...
     public ReservationViewModel GetByServiceId(int serviceId)
     {
         if (serviceId <= 0)
