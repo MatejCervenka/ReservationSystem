@@ -6,7 +6,7 @@ namespace ReserveSystem.Interfaces;
 
 public interface IReservationService
 {
-    List<ReservationViewModel> GetAll();
+    List<ReservationListViewModel> GetAll();
     ReservationViewModel GetById(int id);
     ReservationViewModel GetByServiceId(int serviceId);
     ReservationViewModel GetByServiceName(string serviceName);

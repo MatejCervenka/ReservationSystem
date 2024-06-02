@@ -16,5 +16,7 @@ public class AutoMapperProfile : Profile
             .ForMember(x => x.Text, y => y.MapFrom(src => src.Name));
         CreateMap<Reservation, ReservationViewModel>();
         CreateMap<Service, ServiceViewModel>();
+        CreateMap<Reservation, ReservationListViewModel>()
+            .ForMember(dest => dest.ServiceName, src => src.MapFrom(src => src.Service.Name));
     }
 }

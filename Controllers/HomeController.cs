@@ -23,15 +23,22 @@ namespace ReserveSystem.Controllers
         [Route("/create-reservation")]
         public IActionResult CreateReservation(ReservationViewModel viewModel)
         {
-            var isSuccess = _mainService.CreateReservation(viewModel);
-            if (isSuccess)
+            try
             {
-                return View(viewModel);
+                var isSuccess = _mainService.CreateReservation(viewModel);
+                if (isSuccess)
+                {
+                    return View("/Views/Home/SuccessfulReservation.cshtml", viewModel);
+                }
+                Console.WriteLine("isSuccess: " + isSuccess);
+                return View();
             }
-
-            throw new Exception("Could not create reservation");
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                
+                return View("Error");
+            }
         }
-        
-        
     }
 }

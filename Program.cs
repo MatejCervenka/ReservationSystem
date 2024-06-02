@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ReserveSystem.Database;
 using ReserveSystem.Interfaces;
-using ReserveSystem.Models;
 using ReserveSystem.Services;
 
 namespace ReserveSystem;
@@ -20,6 +19,7 @@ public class Program
 
         // Registrace vašich služeb v DI kontejneru
         builder.Services.AddScoped<IMainService, MainService>();
+        builder.Services.AddScoped<IAdminService, AdminService>();
         builder.Services.AddScoped<IReservationService, ReservationService>(); // Přidá službu ReservationService s životností Scoped
         builder.Services.AddScoped<IPricingService, PricingService>(); // Přidá službu PricingService s životností Scoped
         builder.Services.AddScoped<IServiceService, ServiceService>(); // Přidá službu ServiceService s životností Scoped
@@ -30,6 +30,8 @@ public class Program
 
         // Register AutoMapper
         builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+
+        builder.Services.AddLogging();
 
         var app = builder.Build(); // Vytvoří instanci WebApplication, která je použita pro konfiguraci middleware a spuštění aplikace
         

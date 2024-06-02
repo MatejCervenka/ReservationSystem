@@ -1,0 +1,46 @@
+﻿@model List<ReserveSystem.ViewModels.ReservationListViewModel>
+
+<h2>Rezervace</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Jméno</th>
+        <th>Příjmení</th>
+        <th>Telefon</th>
+        <th>Email</th>
+        <th>Služba</th>
+        <th>Datum</th> 
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Surname</td>
+            <td>@item.Phone</td>
+            <td>@item.Email</td>
+            <td>@item.ServiceName</td>
+            <td>@item.CreatedAt</td>
+            <td class="buttons">
+                <div class="button-container">
+                    <button class="more-button">
+                        <img src="@Url.Content("~/dots.svg")" alt="more">
+                    </button>
+                    <div class="hidden-buttons extra-buttons">
+                        <button>
+                            <img src="@Url.Content("~/email_small.svg")" alt="email">
+                        </button>
+                        <button>
+                            <img src="@Url.Content("~/edit.svg")" alt="edit">
+                        </button>
+                        <button>
+                            <img src="@Url.Content("~/remove.svg")" alt="remove">
+                        </button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

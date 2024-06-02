@@ -7,10 +7,12 @@ namespace ReserveSystem.Controllers;
 public class AdminController : Controller
 {
     private readonly ILoginService _loginService;
+    private readonly IAdminService _adminService;
 
-    public AdminController(ILoginService loginService)
+    public AdminController(ILoginService loginService, IAdminService adminService)
     {
         _loginService = loginService;
+        _adminService = adminService;
     }
 
     [HttpGet]
@@ -39,6 +41,7 @@ public class AdminController : Controller
 
     public IActionResult Reservations()
     {
-        return View();
+        var viewModel = _adminService.GetReservationsListViewModel();
+        return View(viewModel);
     }
 }
