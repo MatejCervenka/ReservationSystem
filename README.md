@@ -43,9 +43,9 @@ Systém využívá SQL databázi se čtyřmi hlavními tabulkami:
 
 ## Použití
 **Uživatelská Stránka**
-  - **Intro Sekce: Stručné představení podniku a tlačítko pro přesun na rezervační formulář.
-  - **Ceník a Formulář: Zobrazení ceníku služeb a formulář pro vytvoření nové rezervace.
-  - **Kontakty: Kontaktní údaje na podnik.
+  - **Intro Sekce:** Stručné představení podniku a tlačítko pro přesun na rezervační formulář.
+  - **Ceník a Formulář:** Zobrazení ceníku služeb a formulář pro vytvoření nové rezervace.
+  - **Kontakty:** Kontaktní údaje na podnik.
 
 **Admin Sekce**
   - **Přihlášení:**
@@ -74,5 +74,5 @@ Systém využívá SQL databázi se čtyřmi hlavními tabulkami:
 ### AutoMapper
   - **AutoMapper:** Používá se pro mapování mezi databázovými entitami a viewModely, které se používají ve webových stránkách.
 
-### Rayor Pages
+### Razor Pages
   - **Razor Pages:** Používají se k tvorbě uživatelského rozhraní. Razor Pages kombinují HTML a C# kód a umožňují dynamické generování obsahu na webových stránkách.
