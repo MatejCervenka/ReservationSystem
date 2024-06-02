@@ -1,0 +1,17 @@
+﻿@model List<ReserveSystem.ViewModels.PricingViewModel>
+
+<div class="priceList">
+    <h4>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non pulvinar neque laoreet suspendisse interdum consectetur libero id. Libero enim sed faucibus turpis in. Nunc vel risus commodo viverra maecenas accumsan lacus. Tempor orci dapibus ultrices in. Aliquam nulla facilisi cras fermentum odio eu feugiat pretium nibh. Lectus quam id leo in. Nulla aliquet enim tortor at auctor urna nunc id cursus. Amet purus gravida quis blandit turpis cursus in.
+    </h4>
+    <h2>Ceník</h2>
+    <table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <th>@item.Amount @item.Currency</th>
+            </tr>
+        }
+    </table>
+</div>

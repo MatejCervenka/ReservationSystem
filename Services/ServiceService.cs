@@ -16,8 +16,7 @@ public class ServiceService : IServiceService
         _dbContext = dbContext;
         _mapper = mapper;
     }
-
-
+    
     public List<ServiceViewModel> GetAll()
     {
         var serviceDbModels = _dbContext.Pricings.ToList();

@@ -14,6 +14,5 @@ public class PricingViewModel
     public decimal SaleAmount { get; set; }
 
     public decimal Amount { get; set; }
-    
-    public char Currency { get; set; }
+    public string Currency { get; set; }
 }

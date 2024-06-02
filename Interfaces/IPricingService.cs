@@ -1,4 +1,5 @@
-﻿using ReserveSystem.ViewModels;
+﻿using ReserveSystem.Models;
+using ReserveSystem.ViewModels;
 
 namespace ReserveSystem.Interfaces;
 

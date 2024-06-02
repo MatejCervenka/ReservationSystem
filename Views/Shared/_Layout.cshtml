@@ -1,1 +1,11 @@
-﻿@RenderBody()
+﻿<!DOCTYPE html>
+<html lang="cs">
+    @Html.Partial("_Head.cshtml")
+    <body>
+        @Html.Partial("_Header.cshtml")
+    <main>
+        @RenderBody()
+    </main>
+        @Html.Partial("_Footer.cshtml")
+    </body>
+</html>

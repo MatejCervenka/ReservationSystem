@@ -1,136 +1,19 @@
 ﻿@model ReserveSystem.ViewModels.IndexPageViewModel
 
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="@Url.Content("~/css/style.css")">
-    <title>ReservationSystem</title>
-</head>
-<body>
-<header>
-    <div class="header-left">
-        <h2>ReserveSystem</h2>
-    </div>
-    <nav>
-        <ul>
-            <li><a class="button" onclick="document.location = '@Url.Action("Login", "Account")'">Přihlásit se</a></li>
-            <li><a href="#pricing-section">Ceník</a></li>
-            <li><a href="#contact-section">Kontakt</a></li>
-            <li><a href="#pricing-section" class="button">Rezervovat</a></li>
-        </ul>
-    </nav>
-</header>
 <main>
     <section id="intro-section" class="intro-section">
-        <div class="intro-text">
-            <h2>O nás</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non pulvinar neque laoreet suspendisse interdum consectetur libero id. Libero enim sed faucibus turpis in. Nunc vel risus commodo viverra maecenas accumsan lacus. Tempor orci dapibus ultrices in. Aliquam nulla facilisi cras fermentum odio eu feugiat pretium nibh. Lectus quam id leo in. Nulla aliquet enim tortor at auctor urna nunc id cursus. Amet purus gravida quis blandit turpis cursus in.</p>
-            <!-- Add more paragraphs as needed -->
-        </div>
-        <div class="reservation-box">
-            <h2>Rezervace</h2>
-            <button onclick="location.href = '#pricing-section'">Rezervovat</button>
-        </div>
+        @Html.Partial("Intro.cshtml")
     </section>
-</main>
-<div class="divider"></div>
-<main>
+    
+    <div class="divider"></div>
+    
     <section id="pricing-section" class="pricing-section">
-        <div class="priceList">
-            <h4>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non pulvinar neque laoreet suspendisse interdum consectetur libero id. Libero enim sed faucibus turpis in. Nunc vel risus commodo viverra maecenas accumsan lacus. Tempor orci dapibus ultrices in. Aliquam nulla facilisi cras fermentum odio eu feugiat pretium nibh. Lectus quam id leo in. Nulla aliquet enim tortor at auctor urna nunc id cursus. Amet purus gravida quis blandit turpis cursus in.
-            </h4>
-            <h2>Ceník</h2>
-            <table>
-                <tr>
-                    <td>Item</td>
-                    <th>0,00 Kč</th>
-                </tr>
-                <tr>
-                    <td>Item</td>
-                    <th>0,00 Kč</th>
-                </tr>
-                <tr>
-                    <td>Item</td>
-                    <th>0,00 Kč</th>
-                </tr>
-                <tr>
-                    <td>Item</td>
-                    <th>0,00 Kč</th>
-                </tr>
-                <tr>
-                    <td>Item</td>
-                    <th>0,00 Kč</th>
-                </tr>
-                <tr>
-                    <td>Item</td>
-                    <th>0,00 Kč</th>
-                </tr>
-                <!-- Add more rows as needed -->
-            </table>
-        </div>
-        <div class="reservation-form">
-            <h3>Rezervace</h3>
-            <form>
-                <label for="jmeno">Jméno</label>
-                <input type="text" id="jmeno" name="jmeno" required>
-                <label for="prijmeni">Příjmení</label>
-                <input type="text" id="prijmeni" name="prijmeni" required>
-                <label for="telefon">Telefon</label>
-                <input type="tel" id="telefon" name="telefon" required>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-                <label for="sluzba">Služba</label>
-                <select id="sluzba" name="sluzba" required>
-                    <option value="sluzba1">Služba 1</option>
-                    <option value="sluzba2">Služba 2</option>
-                    <option value="sluzba3">Služba 3</option>
-                </select>
-                <button type="submit">Rezervovat</button>
-            </form>
-        </div>
+        @Html.Partial("Pricing.cshtml", Model.PricingList)
+        @Html.Partial("Form.cshtml", Model.Reservation)
     </section>
-</main>
-<div class="divider"></div>
-<main>
+    
+    <div class="divider"></div>
     <section id="contact-section" class="contact-section">
-        <div class="contact-info">
-            <h4>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non pulvinar neque laoreet suspendisse interdum consectetur libero id. Libero enim sed faucibus turpis in. Nunc vel risus commodo viverra maecenas accumsan lacus. Tempor orci dapibus ultrices in. Aliquam nulla facilisi cras fermentum odio eu feugiat pretium nibh. Lectus quam id leo in. Nulla aliquet enim tortor at auctor urna nunc id cursus. Amet purus gravida quis blandit turpis cursus in.
-            </h4>
-        </div>
-        <div class="contacts">
-            <div class="phone">
-                <div>
-                    <img src="@Url.Content("~/phone.svg")" alt="phone">
-                </div>
-                <div class="phone-text">
-                    <p>Jméno Příjmení: +420 597 865 264</p>
-                    <p>Jméno Příjmení: +420 597 865 264</p>
-                </div>
-            </div>
-            <div class="email">
-                <div>
-                    <img src="@Url.Content("~/email.svg")" alt="email">
-                </div>
-                <div class="email-text">
-                    <p>Jméno: afasfda@gmail.com</p>
-                    <p>Jméno: afasfda@gmail.com</p>
-                </div>
-            </div>
-        </div>
-        <div class="address">
-            <h3>Kde nás najdete</h3>
-            <address>Na Pankráci 1685/17, 140 00 Praha 4 - Nusle, Česko</address>
-            <div id="map"></div>
-        </div>
+        @Html.Partial("Contacts.cshtml")
     </section>
 </main>
-<footer>
-
-</footer>
-<script src="~/js/script.js"></script>
-</body>
-</html>

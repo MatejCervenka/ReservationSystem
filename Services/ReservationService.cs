@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using ReserveSystem.Database;
 using ReserveSystem.Interfaces;
 using ReserveSystem.Models;
@@ -17,23 +19,17 @@ public class ReservationService : IReservationService
         _mapper = mapper;
     }
 
-    public List<ReservationViewModel> GetAll()
+    public List<ReservationListViewModel> GetAll()
     {
-        var reservationDbModels = _dbContext.Pricings.ToList();
-        
-        if (reservationDbModels == null || !reservationDbModels.Any())
-        {
-            return new List<ReservationViewModel>();
-        }
-
-        var reservationViewModels = _mapper.Map<List<ReservationViewModel>>(reservationDbModels);
-
-        return reservationViewModels;
+        var reservation = _dbContext.Reservations.Include(x => x.Service).ToList();
+        var result = _mapper.Map<List<ReservationListViewModel>>(reservation);
+        return result;
     }
-
+    
+    
     public ReservationViewModel GetById(int id)
     {
-        if (id <= 0)
+        if (id == 0)
         {
             return null;
         }
@@ -151,5 +147,14 @@ public class ReservationService : IReservationService
         _dbContext.Reservations.Add(reservationDbModel);
 
         return _dbContext.SaveChanges() > 0;
+    }
+
+    public List<SelectListItem> GetServiceList()
+    {
+        return _dbContext.Services.Select(service => new SelectListItem
+        {
+            Value = service.Id.ToString(),
+            Text = service.Name
+        }).ToList();
     }
 }

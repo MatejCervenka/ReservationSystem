@@ -1,0 +1,28 @@
+﻿@model ReserveSystem.ViewModels.ReservationViewModel
+
+<div class="reservation-form">
+    <h3>Rezervace</h3>
+    @using (Html.BeginForm("CreateReservation", "Home", FormMethod.Post))
+    {
+        @Html.LabelFor(x => x.Name)
+        @Html.EditorFor(x => x.Name)
+        @Html.ValidationMessageFor(x => x.Name)
+    
+        @Html.LabelFor(x => x.Surname)
+        @Html.EditorFor(x => x.Surname)
+        @Html.ValidationMessageFor(x => x.Surname)
+    
+        @Html.LabelFor(x => x.Phone)
+        @Html.EditorFor(x => x.Phone)
+        @Html.ValidationMessageFor(x => x.Phone)
+    
+        @Html.LabelFor(x => x.Email)
+        @Html.EditorFor(x => x.Email)
+        @Html.ValidationMessageFor(x => x.Email)
+    
+        @Html.LabelFor(x => x.ServiceList)
+        @Html.DropDownListFor(x => x.ServiceId, Model.ServiceList, "Select an option")
+        
+        <button type="submit">Rezervovat</button>
+    }
+</div>

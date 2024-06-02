@@ -1,0 +1,7 @@
+﻿@model ReserveSystem.ViewModels.ReservationsListViewModel
+
+
+<section class="reservations-page">
+     @Html.Partial("ReservationList.cshtml", Model.ReservationList)
+</section>
+<script src="@Url.Content("~/js/script.js")"></script>

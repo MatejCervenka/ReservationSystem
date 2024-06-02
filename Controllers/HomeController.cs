@@ -1,75 +1,44 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using ReserveSystem.Database;
-using ReserveSystem.Models;
+using ReserveSystem.Interfaces;
 using ReserveSystem.ViewModels;
 
-namespace ReserveSystem.Controllers;
-
-public class HomeController : Controller
+namespace ReserveSystem.Controllers
 {
-    private readonly MyDbContext _dbContext;
+    public class HomeController : Controller
+    {
+        private readonly IMainService _mainService;
 
-    public HomeController(MyDbContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
-    
-    public IActionResult Index()
-    {
-        var viewModel = new IndexPageViewModel
+        public HomeController(IMainService mainService)
         {
-            Login = new LoginViewModel
-            {
-                Id = 1,
-                Username = "exampleUser",
-                Password = "examplePass",
-                CreatedAt = DateTime.Now
-            },
-            Pricing = new PricingViewModel
-            {
-                Id = 1,
-                Title = "Basic Plan",
-                Description = "This is a basic plan.",
-                SaleAmount = 49.99M,
-                Amount = 59.99M,
-                Currency = 'K'
-            },
-            Reservation = new ReservationViewModel
-            {
-                Id = 1,
-                ServiceId = 1,
-                Name = "John",
-                Surname = "Doe",
-                Phone = "123-456-7890",
-                Email = "john.doe@example.com",
-                CreatedAt = DateTime.Now,
-                ServiceViewModel = new ServiceViewModel
-                {
-                    Id = 1,
-                    Name = "Haircut"
-                }
-            },
-            Service = new ServiceViewModel
-            {
-                Id = 1,
-                Name = "Haircut",
-                Reservations = new List<ReservationViewModel>
-                {
-                    new ReservationViewModel
-                    {
-                        Id = 1,
-                        ServiceId = 1,
-                        Name = "John",
-                        Surname = "Doe",
-                        Phone = "123-456-7890",
-                        Email = "john.doe@example.com",
-                        CreatedAt = DateTime.Now
-                    }
-                }
-            }
-        };
+            _mainService = mainService;
+        }
+        
+        public IActionResult Index()
+        {
+            var viewModel = _mainService.GetIndexViewModel();
+            return View(viewModel);
+        }
 
-        return View(viewModel);
+        [HttpPost]
+        [Route("/create-reservation")]
+        public IActionResult CreateReservation(ReservationViewModel viewModel)
+        {
+            try
+            {
+                var isSuccess = _mainService.CreateReservation(viewModel);
+                if (isSuccess)
+                {
+                    return View("/Views/Home/SuccessfulReservation.cshtml", viewModel);
+                }
+                Console.WriteLine("isSuccess: " + isSuccess);
+                return View();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                
+                return View("Error");
+            }
+        }
     }
 }

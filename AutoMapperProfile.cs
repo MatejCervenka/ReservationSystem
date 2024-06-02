@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using ReserveSystem.Models;
 using ReserveSystem.ViewModels;
 
@@ -11,8 +12,11 @@ public class AutoMapperProfile : Profile
         CreateMap<Login, LoginViewModel>();
         CreateMap<Pricing, PricingViewModel>();
         CreateMap<Reservation, ReservationViewModel>();
-        CreateMap<Reservation, ReservationViewModel>()
-            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Service.Name));
+        CreateMap<ServiceViewModel, SelectListItem>()
+            .ForMember(x => x.Text, y => y.MapFrom(src => src.Name));
+        CreateMap<Reservation, ReservationViewModel>();
         CreateMap<Service, ServiceViewModel>();
+        CreateMap<Reservation, ReservationListViewModel>()
+            .ForMember(dest => dest.ServiceName, src => src.MapFrom(src => src.Service.Name));
     }
 }

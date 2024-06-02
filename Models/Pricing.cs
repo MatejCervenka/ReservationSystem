@@ -19,5 +19,5 @@ public class Pricing : Entity
     
     [Required]
     [Column(TypeName = "char(5)")]
-    public char Currency { get; set; }
+    public string Currency { get; set; }
 }
