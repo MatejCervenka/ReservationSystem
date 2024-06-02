@@ -1,4 +1,4 @@
-# Rezervační Systém pro Kadeřnictví
+# Rezervační Systém
 Tento rezervační systém může být využit pro jakékoli služby, aby mohli zákazníci snadno provádět rezervace a správci mohli spravovat rezervace. Webová aplikace je postavena na platformě ASP.NET Core s využitím Entity Frameworku pro práci s databází, AutoMapperu pro mapování databázových entit a Razor Pages pro tvorbu uživatelského rozhraní.
 Zde je jako příklad služby používající tento systém Kadeřnictví.
 
