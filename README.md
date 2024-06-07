@@ -15,7 +15,7 @@ Zde je jako příklad služby používající tento systém Kadeřnictví.
 ---
 
 ## Databázová Struktura
-Systém využívá SQL databázi se čtyřmi hlavními tabulkami:
+Systém využívá Microsoft SQL databázi se čtyřmi hlavními tabulkami:
 - **Všechny obsahují PK**
 
 **Logins**
