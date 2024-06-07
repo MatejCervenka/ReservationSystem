@@ -65,7 +65,7 @@ Systém využívá SQL databázi se čtyřmi hlavními tabulkami:
 
 ## Technologie
   - **Backend:** ASP.NET Core
-  - **Databáze:** SQL Server
+  - **Databáze:** Microsoft SQL Server
   - **ORM:** Entity Framework Core
   - **Mapping:** AutoMapper
   - **Frontend:** Razor Pages
