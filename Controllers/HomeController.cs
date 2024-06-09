@@ -38,10 +38,9 @@ namespace ReserveSystem.Controllers
                 {
                     return View("/Views/Home/SuccessfulReservation.cshtml", viewModel);
                 }
-                
                 // Pokud došlo k chybě při vytváření rezervace, zobrazí se stránka bez potvrzení
                 Console.WriteLine("isSuccess: " + isSuccess);
-                return View();
+                return View("/Views/Home/UnsuccessfulReservation.cshtml", viewModel);
             }
             catch (Exception ex)
             {

@@ -322,6 +322,17 @@ nav a:hover {
   margin-left: 10px;
 }
 
+.reservations-output {
+  text-align: center;
+  padding: 5em;
+}
+
+.reservations-output ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+
 @media screen and (max-width: 800px) {
   .intro {
     flex-direction: column;

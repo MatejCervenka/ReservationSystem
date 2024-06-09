@@ -1,15 +1,27 @@
 ﻿@model ReserveSystem.ViewModels.ReservationViewModel
 
-<h2>Rezervace úspěšně vytvořena</h2>
+<section class="reservations-output">
+    <h2>Rezervace úspěšně vytvořena</h2>
 
-<p>Děkujeme za vaši rezervaci. Zde jsou detaily:</p>
+    <p>Děkujeme za vaši rezervaci. Zde jsou detaily:</p>
+    
+    <ul>
+        <li>
+            Jméno: <strong>@Model.Name</strong>
+        </li>
+        <li>
+            Příjmení: <strong>@Model.Surname</strong>
+        </li>
+        <li>
+            Telefonní číslo: <strong>@Model.Phone</strong>
+        </li>
+        <li>
+            Email: <strong>@Model.Email</strong>
+        </li>
+        <li>
+            Služba: <strong>@Model.ServiceId</strong>
+        </li>
+    </ul>
 
-<ul>
-    <li>Jméno: @Model.Name</li>
-    <li>Příjmení: @Model.Surname</li>
-    <li>Telefonní číslo: @Model.Phone</li>
-    <li>Email: @Model.Email</li>
-    <li>Služba: @Model.ServiceId</li>
-</ul>
-
-<p><a href="/">Domovská stránka</a></p>
+    <p><a href="/">Domovská stránka</a></p>
+</section>

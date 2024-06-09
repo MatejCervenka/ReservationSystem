@@ -27,4 +27,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })(buttonContainers[i], i);
     }
+
+    // Inicializace mapy
+    var map = L.map('map').setView([51.505, -0.09], 13);
+
+    // Přidání mapových podkladů z OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Přidání markeru na mapu
+    L.marker([51.5, -0.09]).addTo(map)
+        .bindPopup('Ahoj! Jsem zde.')
+        .openPopup();
 });
+
