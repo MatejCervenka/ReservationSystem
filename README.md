@@ -15,15 +15,16 @@ Zde je jako příklad služby používající tento systém Kadeřnictví.
 ---
 
 ## Databázová Struktura
-Systém využívá SQL databázi se čtyřmi hlavními tabulkami:
+Systém využívá Microsoft SQL databázi se čtyřmi hlavními tabulkami:
+- **Všechny obsahují PK**
 
 **Logins**
   - **Username:** Uživatelské jméno admina.
   - **Password:** Heslo admina.
 
 **Reservations**
-  - **FirstName:** Jméno zákazníka.
-  - **LastName:** Příjmení zákazníka.
+  - **Name:** Jméno zákazníka.
+  - **Surname:** Příjmení zákazníka.
   - **Phone:** Telefon zákazníka.
   - **Email:** Email zákazníka.
   - **ServiceId:** FK k ID služby z tabulky Services.
@@ -38,7 +39,8 @@ Systém využívá SQL databázi se čtyřmi hlavními tabulkami:
   - **Amount:** Cena služby.
   - **SaleAmount:** Cena po slevě (pokud je sleva).
   - **Currency:** Měna.
-
+    
+ 
 ---
 
 ## Použití
@@ -63,7 +65,7 @@ Systém využívá SQL databázi se čtyřmi hlavními tabulkami:
 
 ## Technologie
   - **Backend:** ASP.NET Core
-  - **Databáze:** SQL Server
+  - **Databáze:** Microsoft SQL Server
   - **ORM:** Entity Framework Core
   - **Mapping:** AutoMapper
   - **Frontend:** Razor Pages
